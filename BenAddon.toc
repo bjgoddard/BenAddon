@@ -1,0 +1,10 @@
+## Interface: 11304
+## Title: BenAddon
+## Author: Ben
+## Version: 1.0
+## DefaultState: enabled
+## SavedVariables: BenRaidCheck, BenFollowCheck
+
+Templates.xml
+BenAddon.lua
+BenAddon.xml

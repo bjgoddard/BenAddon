@@ -1,0 +1,102 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+    <Script File="BenAddon.lua"/>
+    
+    <Frame name="BenAddonFrame" parent="UIParent" hidden="false" toplevel="true" frameStrata="DIALOG" enableMouse="true" movable="true">
+        <Size>
+            <AbsDimension x="250" y="140" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" />
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+            edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+        </Backdrop>
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size><AbsDimension x="0" y="60"/></Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                        <Offset><AbsDimension x="0" y="12"/></Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString inherits="GameFontNormal" text="Hide RaidToggle Frame">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset><AbsDimension x="55" y="-38"/></Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString inherits="GameFontNormal" text="Whisper follow target">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent">
+                        <Offset><AbsDimension x="55" y="-68"/></Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString inherits="GameFontNormal" text="Ben_UI">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="$parent"></Anchor>
+                    </Anchors>
+                </FontString>
+		    </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parentButtonClose" inherits="OptionsButtonTemplate" text="Close">
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                    <Offset><AbsDimension x="-12" y="16"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick> BenAddonFrame:Hide(); </OnClick>
+                </Scripts>
+            </Button>
+            <CheckButton name="BenRaidFrameCheck" inherits="UICheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                    <Offset><AbsDimension x="20" y="-30"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad> BenRaidOnLoad(); </OnLoad>
+                </Scripts>
+            </CheckButton>
+             <CheckButton name="BenFollowWhisperCheck" inherits="UICheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent">
+                    <Offset><AbsDimension x="20" y="-60"/></Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>benFollowFrame();  </OnLoad>
+                </Scripts>
+            </CheckButton>
+	    </Frames>
+        <Scripts>
+            <OnLoad>
+                BenRaidOnLoad(self);
+            </OnLoad>
+            <OnMouseDown>
+                BenAddonFrame:StartMoving();
+            </OnMouseDown>
+            <OnMouseUp>
+                BenAddonFrame:StopMovingOrSizing();
+            </OnMouseUp>
+        </Scripts>
+    </Frame>
+</Ui>
