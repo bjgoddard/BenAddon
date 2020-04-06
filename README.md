@@ -1,6 +1,6 @@
-# BenUI
+# BenAddon
 
-BenUI (XML, Lua) contains improvements to the default interface in World of Warcraft Classic. 
+BenAddon (XML, Lua) contains improvements to the default interface in World of Warcraft Classic. 
 
 To install, download the .zip and place the included folder into your WorldOfWarcraft/_classic_/Interface/Addons folder.
 
